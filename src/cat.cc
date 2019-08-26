@@ -6,30 +6,33 @@
 using std::cout;
 using std::endl;
 
-Cat::Cat():Animal()
+Cat::Cat()
 {
     //
+    cout << "Consturtor: Cat::Cat()" << endl;
 }
 
 Cat::Cat(const char *name, int shoutNum):Animal(name, shoutNum)
 {
     //
+    cout << "Consturtor: Cat::Cat(const char *name, int shoutNum)" << endl;
 }
 
 Cat::Cat(const Cat &obj):Animal(obj)
 {
     //
+    cout << "Copy Consturtor: Cat::Cat(const Cat &obj)" << endl;
 }
 
 Cat &Cat::operator=(const Cat &obj)
 {
+    cout << "Overload assignment operator: Cat &Cat::operator=(const Cat &obj)" << endl;
     if (this == &obj) {
         return *this;
     }
-    delete []name;
-    name = new char(strlen(obj.name) + 1);
-    strcpy(name, obj.name);
-    shoutNum = obj.shoutNum;
+
+    Animal::operator=(obj);
+    //static_cast<Animal &>(*this)=obj;
 
     return *this;
 }
@@ -37,6 +40,7 @@ Cat &Cat::operator=(const Cat &obj)
 Cat::~Cat()
 {
     //
+    cout << "Desturtor: Cat::~Cat()" << endl;
 }
 
 void Cat::shout()
