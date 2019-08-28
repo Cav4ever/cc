@@ -6,7 +6,7 @@
 class OperationFactory
 {
     public:
-        Operation *createOperate(char c);
+        virtual Operation *createOperate()=0;
 };
 
 #endif
