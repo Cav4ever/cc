@@ -1,13 +1,13 @@
 #include <iostream>
-#include "operationFactory.h"
+#include "context.h"
 #include "operationAdd.h"
 #include "operationSub.h"
 #include "operationMul.h"
 #include "operationDiv.h"
 
-Operation *OperationFactory::createOperate(char c)
+Context::Context(char c)
 {
-    Operation *oper = NULL;
+    oper = NULL;
     switch (c) {
     case '+':
         oper = new OperationAdd();
@@ -24,5 +24,18 @@ Operation *OperationFactory::createOperate(char c)
     default:
         break;
     }
-    return oper;
+    if (NULL != oper) {
+        oper->setNumber(0, 0);
+    }
+}
+
+void Context::getResult(int numberA, int numberB)
+{
+    oper->setNumber(numberA, numberB);
+    oper->getResult();
+}
+
+Context::~Context()
+{
+    delete []oper;
 }

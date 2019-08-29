@@ -1,12 +1,9 @@
-#include "operationFactory.h"
+#include "context.h"
 
 int main()
 {
-   OperationFactory operationFactory;
-   Operation *operation = operationFactory.createOperate('+');
-   operation->setNumber(16, 7);
-   operation->getResult();
-   delete operation;
+   Context context('+');
+   context.getResult(16, 7);
 
     return 0;
 }
