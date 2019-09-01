@@ -1,17 +1,9 @@
-#include "concreteA.h"
-#include "concreteB.h"
-#include "concreteC.h"
+#include "facade.h"
 
 int main()
 {
-    Template *t = new ConcreteA();
-    t->primitiveMethod();
-    delete t;
-    t = new ConcreteB();
-    t->primitiveMethod();
-    delete t;
-    t = new ConcreteC();
-    t->primitiveMethod();
-    delete t;
+    Facade facade;
+    facade.method();
+
     return 0;
 }
