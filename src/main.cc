@@ -1,5 +1,6 @@
 #include "concreteA.h"
 #include "concreteB.h"
+#include "concreteC.h"
 
 int main()
 {
@@ -9,6 +10,8 @@ int main()
     t = new ConcreteB();
     t->primitiveMethod();
     delete t;
-
+    t = new ConcreteC();
+    t->primitiveMethod();
+    delete t;
     return 0;
 }
