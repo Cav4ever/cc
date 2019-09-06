@@ -1,32 +1,27 @@
-#include "cat.h"
-#include "dog.h"
+#include "nbaObserver.h"
+#include "stockObserver.h"
+#include "boss.h"
 
 int main()
 {
-    Animal *animal;
-    Cat cat("MM", 3);
-    Dog dog("WW", 6);
-    Cat cat2("XiaoBiao", 4);
-    cat = cat2;
-    Cat catRef("Caty", 6);
-    Animal &animalRef = catRef;
+    Subject *sub = new Boss();
+    sub->setState();
+    Observer *hui = new NbaObserver(sub, "Hui");
+    Observer *yong = new StockObserver(sub, "Yong");
+    Observer *fei = new NbaObserver(sub, "Fei");
 
-    animal = &cat;
-    animal->shout();
+    sub->attach(hui);
+    sub->attach(yong);
+    sub->attach(fei);
+    sub->notify();
 
-    animal = &dog;
-    animal->shout();
-
-    animalRef.shout();
-
+    sub->detach(fei);
+    cout<<endl;
+    cout<<"after detach fei" <<endl;
+    sub->notify();
+    delete sub;
+    delete hui;
+    delete yong;
+    delete fei;
     return 0;
 }
-
-/* int main()
-{
-    Cat cat1;
-    Cat cat2("MM", 3);
-    Cat cat3 = cat1;
-    cat3 = cat2;
-    return 0;
-} */
