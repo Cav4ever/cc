@@ -18,5 +18,5 @@ int main()
    delete factory;
    delete operationUser;
    delete operationDepartment;
-    return 0;
+   return 0;
 }
