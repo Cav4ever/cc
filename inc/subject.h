@@ -17,7 +17,7 @@ class Subject
         void attach(Observer *observer);
         void detach(Observer *observer);
         void notify();
-        string getState();
+        string &getState();
         virtual void setState()=0;
 };
 

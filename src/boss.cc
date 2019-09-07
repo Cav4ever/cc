@@ -2,5 +2,5 @@
 
 void Boss::setState()
 {
-    subjectState = "I am your boss.";
+    subjectState = "I am your big brother.";
 }

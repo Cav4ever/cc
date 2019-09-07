@@ -21,7 +21,7 @@ void Subject::notify()
     }
 }
 
-string Subject::getState()
+string &Subject::getState()
 {
     return subjectState;
 }
