@@ -1,12 +1,14 @@
 #ifndef _OPERATION_FACTORY_H
 #define _OPERATION_FACTORY_H
 
-#include "operation.h"
+#include "openrationUser.h"
+#include "openrationDepartment.h"
 
 class OperationFactory
 {
     public:
-        virtual Operation *createOperate()=0;
+        virtual OperationUser *createUser()=0;
+        virtual OperationDepartment *createDepartment()=0;
 };
 
 #endif
