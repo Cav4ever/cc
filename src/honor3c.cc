@@ -7,5 +7,5 @@ Honor3c::Honor3c(string name): Phone(name)
 
 void Honor3c::chargeWithMiniUSB()
 {
-    cout<<name <<" charge wit mini usb." <<endl;
+    cout<<name <<" charge with mini usb." <<endl;
 }
