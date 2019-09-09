@@ -1,32 +1,18 @@
-#include "cat.h"
-#include "dog.h"
+#include "player.h"
+#include "careTaker.h"
 
 int main()
 {
-    Animal *animal;
-    Cat cat("MM", 3);
-    Dog dog("WW", 6);
-    Cat cat2("XiaoBiao", 4);
-    cat = cat2;
-    Cat catRef("Caty", 6);
-    Animal &animalRef = catRef;
+    Player player("LBJ");
+    player.show();
+    CareTaker careTaker;
+    careTaker.setMemento(player.createMemento());
 
-    animal = &cat;
-    animal->shout();
+    player.fight();
+    player.show();
 
-    animal = &dog;
-    animal->shout();
-
-    animalRef.shout();
-
+    player.setMemento(careTaker.getMemento());
+    player.show();
+    delete careTaker.getMemento();
     return 0;
 }
-
-/* int main()
-{
-    Cat cat1;
-    Cat cat2("MM", 3);
-    Cat cat3 = cat1;
-    cat3 = cat2;
-    return 0;
-} */
