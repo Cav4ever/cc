@@ -10,7 +10,7 @@ Player::Player(string name)
 
 Memento *Player::createMemento()
 {
-    return new Memento(life, atk, def);
+    return (new Memento(life, atk, def));
 }
 
 void Player::setMemento(Memento *memento)
