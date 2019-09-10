@@ -1,32 +1,34 @@
-#include "cat.h"
-#include "dog.h"
+#include "leaf.h"
+#include "composite.h"
 
 int main()
 {
-    Animal *animal;
-    Cat cat("MM", 3);
-    Dog dog("WW", 6);
-    Cat cat2("XiaoBiao", 4);
-    cat = cat2;
-    Cat catRef("Caty", 6);
-    Animal &animalRef = catRef;
+    Composite root("root");
+    Composite part1("part1");
+    Composite part2("part2");
+    Leaf leaf1("leaf1");
+    Leaf leaf2("leaf2");
+    Leaf leaf3("leaf3");
+    Leaf leaf4("leaf4");
+    Leaf leaf5("leaf5");
+    Leaf leaf6("leaf6");
 
-    animal = &cat;
-    animal->shout();
+    root.add(&leaf1);
+    root.add(&leaf2);
+    part1.add(&leaf3);
+    part1.add(&leaf4);
+    part2.add(&leaf5);
+    part2.add(&leaf6);
+    root.add(&part1);
+    root.add(&part2);
 
-    animal = &dog;
-    animal->shout();
+    root.remove(&part1);
+    
+    cout<<"struct:" <<endl;
+    root.Display(1);
 
-    animalRef.shout();
+    cout<<"duty:" <<endl;
+    root.showDuty();    
 
     return 0;
 }
-
-/* int main()
-{
-    Cat cat1;
-    Cat cat2("MM", 3);
-    Cat cat3 = cat1;
-    cat3 = cat2;
-    return 0;
-} */
