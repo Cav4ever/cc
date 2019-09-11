@@ -1,32 +1,25 @@
-#include "cat.h"
-#include "dog.h"
+#include "concreteAggregate.h"
+#include "concreteIterator.h"
 
 int main()
 {
-    Animal *animal;
-    Cat cat("MM", 3);
-    Dog dog("WW", 6);
-    Cat cat2("XiaoBiao", 4);
-    cat = cat2;
-    Cat catRef("Caty", 6);
-    Animal &animalRef = catRef;
+    Aggregate *aggregate = new ConcreteAggregate();
+    aggregate->push("Lebron Jame");
+    aggregate->push("Michael Jordan");
+    aggregate->push("Kobe Bryant");
 
-    animal = &cat;
-    animal->shout();
+    Iterator *iter = aggregate->CreateIterator();
+    if(NULL != iter)
+    {
+        string strItem = iter->first();
+        while(!iter->isEnd())
+        {
+            cout <<iter->getCur() <<" is ok" <<endl;
+            iter->next();
+        }
+    }
 
-    animal = &dog;
-    animal->shout();
-
-    animalRef.shout();
-
+    delete aggregate;
+    delete iter;
     return 0;
 }
-
-/* int main()
-{
-    Cat cat1;
-    Cat cat2("MM", 3);
-    Cat cat3 = cat1;
-    cat3 = cat2;
-    return 0;
-} */
