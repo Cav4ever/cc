@@ -1,9 +1,4 @@
-#include <iostream>
-#include <string.h>
 #include "singleton.h"
-
-using std::cout;
-using std::endl;
 
 Singleton *Singleton::instance = NULL;
 
