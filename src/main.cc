@@ -1,32 +1,19 @@
-#include "cat.h"
-#include "dog.h"
+#include "concreteHandler1.h"
+#include "concreteHandler2.h"
 
 int main()
 {
-    Animal *animal;
-    Cat cat("MM", 3);
-    Dog dog("WW", 6);
-    Cat cat2("XiaoBiao", 4);
-    cat = cat2;
-    Cat catRef("Caty", 6);
-    Animal &animalRef = catRef;
+    int request = 6;
+    Handler *handler2 = new ConcreteHandler2(NULL);
+    Handler *handler1 = new ConcreteHandler1(handler2);
 
-    animal = &cat;
-    animal->shout();
+    handler1->handleRequest(request);
+    request = 15;
+    handler1->handleRequest(request);
+    request = 23;
+    handler1->handleRequest(request);
 
-    animal = &dog;
-    animal->shout();
-
-    animalRef.shout();
-
+    delete handler1;
+    delete handler2;
     return 0;
 }
-
-/* int main()
-{
-    Cat cat1;
-    Cat cat2("MM", 3);
-    Cat cat3 = cat1;
-    cat3 = cat2;
-    return 0;
-} */
