@@ -1,32 +1,19 @@
-#include "cat.h"
-#include "dog.h"
+#include "concreteColleague1.h"
+#include "concreteColleague2.h"
+#include "concreteMediator.h"
 
 int main()
 {
-    Animal *animal;
-    Cat cat("MM", 3);
-    Dog dog("WW", 6);
-    Cat cat2("XiaoBiao", 4);
-    cat = cat2;
-    Cat catRef("Caty", 6);
-    Animal &animalRef = catRef;
+    Mediator *med = new ConcreteMediator();
+    Colleague *c1 = new ConcreteColleague1(med);
+    Colleague *c2 = new ConcreteColleague2(med);
 
-    animal = &cat;
-    animal->shout();
+    med->setColls(c1, c2);
+    c1->send("Will you merry me.");
+    c2->send("I'd love to.");
 
-    animal = &dog;
-    animal->shout();
-
-    animalRef.shout();
-
+    delete med;
+    delete c1;
+    delete c2;
     return 0;
 }
-
-/* int main()
-{
-    Cat cat1;
-    Cat cat2("MM", 3);
-    Cat cat3 = cat1;
-    cat3 = cat2;
-    return 0;
-} */
