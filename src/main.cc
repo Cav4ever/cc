@@ -1,32 +1,21 @@
-#include "cat.h"
-#include "dog.h"
+#include "flyweightFactory.h"
 
 int main()
 {
-    Animal *animal;
-    Cat cat("MM", 3);
-    Dog dog("WW", 6);
-    Cat cat2("XiaoBiao", 4);
-    cat = cat2;
-    Cat catRef("Caty", 6);
-    Animal &animalRef = catRef;
+    FlyweightFactory ff;
+    Flyweight *f1 = ff.getFlyweight("James");
+    f1->operation(23);
+    Flyweight *f2 = ff.getFlyweight("James");
+    f2->operation(0);
 
-    animal = &cat;
-    animal->shout();
-
-    animal = &dog;
-    animal->shout();
-
-    animalRef.shout();
+    if (f1 == f2) {
+        cout <<"f1 == f2" <<endl;
+        delete f1;
+    } else {
+        cout <<"f1 != f2" <<endl;
+        delete f1;
+        delete f2;
+    }
 
     return 0;
 }
-
-/* int main()
-{
-    Cat cat1;
-    Cat cat2("MM", 3);
-    Cat cat3 = cat1;
-    cat3 = cat2;
-    return 0;
-} */
